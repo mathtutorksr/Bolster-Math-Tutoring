@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+}
+
+/* Subtle academic grid & math pattern styling */
+.math-grid-bg {
+  background-color: #fafcff;
+  background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px), radial-gradient(#e2e8f0 0.75px, #fafcff 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.math-subtle-pattern {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism for Light Mode */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-panel-elevated {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+}
+
+/* Subtle float animation for decorative mathematical glyphs */
+@keyframes mathFloatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+@keyframes mathFloatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(7px) rotate(-3deg);
+  }
+}
+
+.animate-float-slow {
+  animation: mathFloatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: mathFloatReverse 7s ease-in-out infinite;
+}
+
+/* Feature card subtle pulse/glow — used in "More Than Just Mathematics Tuition" section */
+@keyframes featureCardPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0px rgba(37, 99, 235, 0);
+    border-color: rgb(226, 232, 240);
+  }
+  40% {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12), 0 0 16px 4px rgba(37, 99, 235, 0.07);
+    border-color: rgba(37, 99, 235, 0.45);
+  }
+  60% {
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.09);
+    border-color: rgba(37, 99, 235, 0.35);
+  }
+}
+
+.feature-card-pulse {
+  animation: featureCardPulse 3s ease-in-out;
+}
+
+/* Smooth fade-in for expanded panels */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeInUp 0.25s ease-out forwards;
+}
+
+/* Teaching strip shimmer */
+@keyframes stripShimmer {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-reverse,
+  .feature-card-pulse,
+  .animate-fadeIn {
+    animation: none !important;
+    transition: none !important;
+  }
+}
