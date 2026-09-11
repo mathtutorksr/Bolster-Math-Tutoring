@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, PhoneCall, Mail, ArrowUp, ArrowRight, Sparkles } from 'lucide-react';
+import { MessageCircle, PhoneCall, Mail, ArrowUp, ArrowRight } from 'lucide-react';
 import { CONFIG, getWhatsAppLink, getPhoneCallLink } from '../data/config';
 
 export const Footer: React.FC = () => {

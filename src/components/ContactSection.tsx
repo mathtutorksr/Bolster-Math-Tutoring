@@ -9,7 +9,7 @@ import {
   HelpCircle,
   ArrowRight
 } from 'lucide-react';
-import { CONFIG, getWhatsAppLink, getPhoneCallLink, getEmailLink } from '../data/config';
+import { CONFIG, getWhatsAppLink, getPhoneCallLink } from '../data/config';
 
 interface ContactSectionProps {
   onOpenDemo?: () => void;

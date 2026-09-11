@@ -85,7 +85,7 @@ Please let me know about scheduling a free demo class.`;
             Book a Free Demo Session
           </h3>
           <p className="text-xs sm:text-sm text-slate-300 mt-1">
-            Personalized 1-on-1 interaction with {CONFIG.professorName} ({CONFIG.experienceYears}).
+            Personalized 1-on-1 interaction with {CONFIG.professorName} ({CONFIG.qualification}).
           </p>
         </div>
 

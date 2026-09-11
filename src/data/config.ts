@@ -41,6 +41,22 @@ export function getWhatsAppLink(customMessage?: string): string {
 }
 
 /**
+ * Helper utility to generate phone call links
+ */
+export function getPhoneCallLink(): string {
+  return `tel:+917337265154`;
+}
+
+/**
+ * Helper utility to generate email links
+ */
+export function getEmailLink(subject?: string): string {
+  const defaultSubject = "Mathematics Tuition Inquiry – BOLSTER Math Tutoring";
+  const emailSubject = subject ? subject : defaultSubject;
+  return `mailto:mathtutorksr@gmail.com?subject=${encodeURIComponent(emailSubject)}`;
+}
+
+/**
  * Specialized WhatsApp message generators based on user selection
  */
 export const WHATSAPP_MESSAGES = {
@@ -48,19 +64,3 @@ export const WHATSAPP_MESSAGES = {
   offlineIndia: "Hello Professor, I am interested in Offline Mathematics Tuition. I would like to know about availability, timing, monthly fee, and location.",
   international: "Hello Professor, I am interested in International Mathematics Tuition. I would like to know about hourly fees, availability, and class schedule.",
 };
-
-/**
- * Helper utility to generate Phone Call links
- */
-export function getPhoneCallLink(): string {
-  return `tel:+917337265154`;
-}
-
-/**
- * Helper utility to generate Email links
- */
-export function getEmailLink(subject?: string): string {
-  const email = CONFIG.emailAddress.trim();
-  const sub = subject ? encodeURIComponent(subject) : encodeURIComponent(`Mathematics Tuition Inquiry – ${CONFIG.siteName}`);
-  return `mailto:${email}?subject=${sub}`;
-}

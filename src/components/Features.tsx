@@ -87,17 +87,12 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
   const [highlightedIdx, setHighlightedIdx] = useState<number>(-1);
   const [pulseKey, setPulseKey] = useState(0);
 
-  // Rotate highlight through cards every 3.5s, each card glows for 2.5s
   const tick = useCallback(() => {
-    setHighlightedIdx((prev) => {
-      const next = (prev + 1) % FEATURES.length;
-      return next;
-    });
+    setHighlightedIdx((prev) => (prev + 1) % FEATURES.length);
     setPulseKey((k) => k + 1);
   }, []);
 
   useEffect(() => {
-    // Respect prefers-reduced-motion
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mq.matches) return;
 
@@ -107,16 +102,24 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
 
   const handleScrollToConnect = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (onOpenDemo) onOpenDemo();
+
+    if (onOpenDemo) {
+      onOpenDemo();
+    }
+
     const elem = document.querySelector('#contact');
-    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <section id="features" className="py-20 md:py-28 bg-white relative border-t border-slate-200/80">
+    <section
+      id="features"
+      className="py-20 md:py-28 bg-white relative border-t border-slate-200/80"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-800 text-xs font-semibold tracking-wide uppercase">
             <CheckCircle2 className="w-3.5 h-3.5 text-brand-600" />
@@ -132,51 +135,46 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
           </p>
         </div>
 
-        {/* 8 Feature Cards — 2×4 on desktop, 2×4 on tablet, 1×8 on mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {FEATURES.map((feat, idx) => {
             const isHighlighted = highlightedIdx === idx;
+
             return (
               <div
-                key={idx}
-                className={`
-                  relative p-5 rounded-2xl bg-slate-50/70 border transition-all duration-300 flex flex-col gap-3
-                  hover:bg-white hover:shadow-soft-md hover:scale-[1.015]
-                  ${isHighlighted
-                    ? `bg-white shadow-soft-md feature-card-pulse ${feat.accent}`
-                    : 'border-slate-200/90 shadow-soft-sm'
-                  }
-                `}
                 key={`${idx}-${isHighlighted ? pulseKey : 'idle'}`}
+                className={`
+                  relative p-5 rounded-2xl bg-slate-50/70 border transition-all duration-300 flex flex-col gap-3 hover:bg-white hover:shadow-soft-md hover:scale-[1.015]
+                  ${
+  isHighlighted
+    ? `bg-white shadow-soft-md feature-card-pulse ${feat.accent}`
+    : 'border-slate-200/90 shadow-soft-sm'
+}
+`}
               >
-                {/* Highlight badge — only when active */}
                 {isHighlighted && (
                   <span className="absolute -top-2.5 right-4 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wide bg-brand-600 text-white shadow-sm">
                     Featured
                   </span>
                 )}
 
-                {/* Icon + Tag row */}
                 <div className="flex items-center justify-between gap-2">
                   <div className={`p-2.5 rounded-xl border ${feat.color}`}>
                     <feat.icon className="w-4 h-4" />
                   </div>
+
                   <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-full border border-slate-200">
                     {feat.tag}
                   </span>
                 </div>
 
-                {/* Title */}
                 <h3 className="font-display font-bold text-sm sm:text-base text-navy-950 leading-snug">
                   {feat.title}
                 </h3>
 
-                {/* Description */}
                 <p className="text-xs text-slate-600 leading-relaxed flex-grow">
                   {feat.desc}
                 </p>
 
-                {/* Bottom included indicator */}
                 <div className="pt-2 border-t border-slate-200/70 flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>Included in all programs</span>
@@ -186,15 +184,16 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
           })}
         </div>
 
-        {/* Clean Callout Strip */}
         <div className="mt-12 p-6 rounded-3xl bg-gradient-to-r from-navy-950 via-navy-900 to-brand-700 text-white shadow-soft-lg flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center md:text-left">
             <span className="text-[11px] uppercase font-bold tracking-widest text-amber-400">
               Personalized Consultation
             </span>
+
             <h3 className="font-display font-bold text-xl sm:text-2xl text-white">
               Ready to Discuss Your Student's Learning Goals?
             </h3>
+
             <p className="text-xs sm:text-sm text-slate-300">
               Contact Professor K. Srinivasa Rao (KSR) to review the current grade syllabus, upcoming exams, or areas needing improvement.
             </p>

@@ -15,7 +15,7 @@ import {
   Send,
   PhoneCall
 } from 'lucide-react';
-import { CONFIG, WHATSAPP_MESSAGES } from '../data/config';
+import { WHATSAPP_MESSAGES } from '../data/config';
 
 type CategoryKey = 'online' | 'offline' | 'international' | null;
 
