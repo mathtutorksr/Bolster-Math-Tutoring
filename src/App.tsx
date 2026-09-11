@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TeachingStrip } from './components/TeachingStrip';
@@ -9,8 +9,11 @@ import { FeedbackSection } from './components/FeedbackSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { MobileQuickBar } from './components/MobileQuickBar';
+import { EnquiryModal } from './components/EnquiryModal';
 
 export const App: React.FC = () => {
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
+
   const handleScrollToContact = () => {
     const elem = document.querySelector('#contact');
     if (elem) {
@@ -18,8 +21,19 @@ export const App: React.FC = () => {
     }
   };
 
+  const handleOpenEnquiryModal = () => {
+    setIsEnquiryModalOpen(true);
+  };
+
+  const handleCloseEnquiryModal = () => {
+    setIsEnquiryModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-[#fafcff] text-slate-800 flex flex-col selection:bg-brand-600 selection:text-white pb-16 md:pb-0">
+      {/* Enquiry Modal */}
+      <EnquiryModal isOpen={isEnquiryModalOpen} onClose={handleCloseEnquiryModal} />
+
       {/* 1. Sticky Navigation */}
       <Navbar />
 
@@ -35,7 +49,7 @@ export const App: React.FC = () => {
         <AboutProfessor onOpenDemo={handleScrollToContact} />
 
         {/* 4. Professional Features Section (#features) */}
-        <Features onOpenDemo={handleScrollToContact} />
+        <Features onOpenDemo={handleOpenEnquiryModal} />
 
         {/* 5. Tuition Categories Section (#tuition-categories) — with integrated enquiry form */}
         <TuitionOptions />

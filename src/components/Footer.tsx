@@ -202,7 +202,7 @@ export const Footer: React.FC = () => {
 
               <div className="pt-1">
                 <a
-                  href="mailto:koppuladeepika16@gmail.com?subject=Website%20Design%20%26%20Development%20Inquiry"
+                  href="mailto:koppuladeepika16@gmail.com?subject=Website%20Creation%20Enquiry&body=Hello%20Deepika%2C%20I%20am%20interested%20in%20creating%20a%20website."
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-navy-900 hover:bg-brand-600/30 text-brand-300 hover:text-white border border-navy-700 hover:border-brand-500 text-[11px] font-semibold transition-all group"
                 >
                   <span>Contact for Website</span>

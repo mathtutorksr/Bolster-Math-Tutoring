@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import {
   BookOpen,
   Lightbulb,
@@ -84,32 +84,10 @@ const FEATURES = [
 ];
 
 export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
-  const [highlightedIdx, setHighlightedIdx] = useState<number>(-1);
-  const [pulseKey, setPulseKey] = useState(0);
-
-  const tick = useCallback(() => {
-    setHighlightedIdx((prev) => (prev + 1) % FEATURES.length);
-    setPulseKey((k) => k + 1);
-  }, []);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (mq.matches) return;
-
-    const id = setInterval(tick, 3500);
-    return () => clearInterval(id);
-  }, [tick]);
-
-  const handleScrollToConnect = (e: React.MouseEvent) => {
+  const handleConnectWithProfessor = (e: React.MouseEvent) => {
     e.preventDefault();
-
     if (onOpenDemo) {
       onOpenDemo();
-    }
-
-    const elem = document.querySelector('#contact');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -137,26 +115,13 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {FEATURES.map((feat, idx) => {
-            const isHighlighted = highlightedIdx === idx;
-
             return (
               <div
-                key={`${idx}-${isHighlighted ? pulseKey : 'idle'}`}
+                key={`${idx}-highlighted`}
                 className={`
-                  relative p-5 rounded-2xl bg-slate-50/70 border transition-all duration-300 flex flex-col gap-3 hover:bg-white hover:shadow-soft-md hover:scale-[1.015]
-                  ${
-  isHighlighted
-    ? `bg-white shadow-soft-md feature-card-pulse ${feat.accent}`
-    : 'border-slate-200/90 shadow-soft-sm'
-}
+                  relative p-5 rounded-2xl bg-white border border-slate-200/90 transition-all duration-300 flex flex-col gap-3 hover:bg-white hover:shadow-soft-md hover:scale-[1.015] shadow-soft-md ${feat.accent}
 `}
               >
-                {isHighlighted && (
-                  <span className="absolute -top-2.5 right-4 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wide bg-brand-600 text-white shadow-sm">
-                    Featured
-                  </span>
-                )}
-
                 <div className="flex items-center justify-between gap-2">
                   <div className={`p-2.5 rounded-xl border ${feat.color}`}>
                     <feat.icon className="w-4 h-4" />
@@ -200,8 +165,8 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
           </div>
 
           <a
-            href="#contact"
-            onClick={handleScrollToConnect}
+            href="#"
+            onClick={handleConnectWithProfessor}
             className="shrink-0 inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-xs font-bold uppercase tracking-wider text-navy-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-sm"
           >
             <span>Connect with Professor</span>
