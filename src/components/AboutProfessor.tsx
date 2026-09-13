@@ -18,9 +18,12 @@ interface AboutProfessorProps {
 export const AboutProfessor: React.FC<AboutProfessorProps> = ({ onOpenDemo }) => {
   const handleScrollToConnect = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (onOpenDemo) onOpenDemo();
-    const elem = document.querySelector('#contact');
-    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+    if (onOpenDemo) {
+      onOpenDemo();
+    } else {
+      const elem = document.querySelector('#contact');
+      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   /* Classes Handled & Subjects Taught - organized by category */

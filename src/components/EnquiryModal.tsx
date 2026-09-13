@@ -61,19 +61,24 @@ Please let me know about scheduling a free demo class.`;
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-navy-950/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-[100] overflow-y-auto bg-navy-950/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 pt-16 sm:pt-20 pb-12 animate-fadeIn cursor-pointer"
+      onClick={onClose}
+    >
       <div 
-        className="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden"
+        className="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden cursor-default my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-navy-950 via-navy-900 to-brand-900 p-5 sm:p-6 text-white relative">
+        <div className="bg-gradient-to-r from-navy-950 via-navy-900 to-brand-900 p-5 sm:p-6 text-white relative pr-16">
           <button
+            type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-slate-300 hover:text-white hover:bg-white/10 rounded-full transition-colors"
-            aria-label="Close"
+            className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/35 active:bg-white/50 text-white border-2 border-white/40 shadow-lg backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
+            aria-label="Close enquiry form"
+            title="Close enquiry form"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 text-white stroke-[2.5]" />
           </button>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-brand-500/30 text-amber-300 text-xs font-semibold mb-2 border border-brand-400/30">
@@ -324,7 +329,7 @@ Please let me know about scheduling a free demo class.`;
           <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
             <button
               type="submit"
-              className="w-full sm:flex-1 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-700 shadow-md flex items-center justify-center gap-2 transition-colors"
+              className="w-full sm:flex-1 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-700 shadow-md flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Send Enquiry on WhatsApp</span>
@@ -337,6 +342,16 @@ Please let me know about scheduling a free demo class.`;
               <PhoneCall className="w-4 h-4 text-navy-800" />
               <span>Call Now</span>
             </a>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="w-full sm:w-auto py-3 px-4 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+              aria-label="Close enquiry form"
+            >
+              <X className="w-4 h-4 text-slate-600" />
+              <span>Close</span>
+            </button>
           </div>
 
           <p className="text-[11px] text-center text-slate-400">

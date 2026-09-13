@@ -47,9 +47,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
 
   const handleScrollToConnect = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (onOpenDemo) onOpenDemo();
-    const elem = document.querySelector('#contact');
-    if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+    if (onOpenDemo) {
+      onOpenDemo();
+    } else {
+      const elem = document.querySelector('#contact');
+      if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall, MessageCircle, ArrowRight } from 'lucide-react';
 import { CONFIG, getWhatsAppLink, getPhoneCallLink } from '../data/config';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenEnquiry?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiry }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -109,7 +113,14 @@ export const Navbar: React.FC = () => {
             {/* Connect with Professor (Primary CTA) */}
             <a
               href="#contact"
-              onClick={(e) => handleSmoothScroll(e, '#contact')}
+              onClick={(e) => {
+                if (onOpenEnquiry) {
+                  e.preventDefault();
+                  onOpenEnquiry();
+                } else {
+                  handleSmoothScroll(e, '#contact');
+                }
+              }}
               className="inline-flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-wider font-bold text-white bg-gradient-to-r from-brand-600 to-navy-800 hover:from-brand-500 hover:to-navy-700 rounded-lg shadow-sm hover:shadow transition-all group"
             >
               <span>Connect with Professor</span>
@@ -158,7 +169,15 @@ export const Navbar: React.FC = () => {
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
             <a
               href="#contact"
-              onClick={(e) => handleSmoothScroll(e, '#contact')}
+              onClick={(e) => {
+                setIsOpen(false);
+                if (onOpenEnquiry) {
+                  e.preventDefault();
+                  onOpenEnquiry();
+                } else {
+                  handleSmoothScroll(e, '#contact');
+                }
+              }}
               className="w-full text-center py-2.5 text-sm font-bold text-white bg-gradient-to-r from-brand-600 to-navy-800 rounded-lg shadow-sm"
             >
               Connect with Professor

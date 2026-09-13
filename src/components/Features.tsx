@@ -23,7 +23,10 @@ const FEATURES = [
     desc: 'We follow the student\'s school curriculum to ensure classroom learning and tuition support work together.',
     tag: 'Curriculum Sync',
     color: 'text-blue-600 bg-blue-50 border-blue-200',
-    accent: 'border-blue-300',
+    topBorder: 'border-t-blue-600',
+    badgeStyle: 'text-blue-700 bg-blue-50 border-blue-200',
+    cardBorder: 'border-blue-200/90',
+    bgGradient: 'from-blue-50/50 via-white to-white',
   },
   {
     icon: Lightbulb,
@@ -31,7 +34,10 @@ const FEATURES = [
     desc: 'Easy and clear explanations focused on understanding concepts rather than memorizing formulas.',
     tag: 'Core Method',
     color: 'text-amber-600 bg-amber-50 border-amber-200',
-    accent: 'border-amber-300',
+    topBorder: 'border-t-amber-500',
+    badgeStyle: 'text-amber-800 bg-amber-50 border-amber-200',
+    cardBorder: 'border-amber-200/90',
+    bgGradient: 'from-amber-50/50 via-white to-white',
   },
   {
     icon: Monitor,
@@ -39,7 +45,10 @@ const FEATURES = [
     desc: 'Interactive online teaching using Google Meet and OneNote Board for a classroom-like learning experience.',
     tag: 'Digital Tools',
     color: 'text-indigo-600 bg-indigo-50 border-indigo-200',
-    accent: 'border-indigo-300',
+    topBorder: 'border-t-indigo-600',
+    badgeStyle: 'text-indigo-700 bg-indigo-50 border-indigo-200',
+    cardBorder: 'border-indigo-200/90',
+    bgGradient: 'from-indigo-50/50 via-white to-white',
   },
   {
     icon: FileText,
@@ -47,7 +56,10 @@ const FEATURES = [
     desc: 'Students receive practice worksheets twice every week to strengthen concepts and problem-solving skills.',
     tag: 'Regular Practice',
     color: 'text-emerald-600 bg-emerald-50 border-emerald-200',
-    accent: 'border-emerald-300',
+    topBorder: 'border-t-emerald-600',
+    badgeStyle: 'text-emerald-800 bg-emerald-50 border-emerald-200',
+    cardBorder: 'border-emerald-200/90',
+    bgGradient: 'from-emerald-50/50 via-white to-white',
   },
   {
     icon: ClipboardCheck,
@@ -55,7 +67,10 @@ const FEATURES = [
     desc: 'A monthly examination based on covered topics helps monitor preparation and understanding.',
     tag: 'Progress Check',
     color: 'text-rose-600 bg-rose-50 border-rose-200',
-    accent: 'border-rose-300',
+    topBorder: 'border-t-rose-600',
+    badgeStyle: 'text-rose-700 bg-rose-50 border-rose-200',
+    cardBorder: 'border-rose-200/90',
+    bgGradient: 'from-rose-50/50 via-white to-white',
   },
   {
     icon: BarChart2,
@@ -63,7 +78,10 @@ const FEATURES = [
     desc: 'Exam progress and areas for improvement are reviewed with parents through a monthly PPT-based progress update.',
     tag: 'Parent Visibility',
     color: 'text-violet-600 bg-violet-50 border-violet-200',
-    accent: 'border-violet-300',
+    topBorder: 'border-t-violet-600',
+    badgeStyle: 'text-violet-700 bg-violet-50 border-violet-200',
+    cardBorder: 'border-violet-200/90',
+    bgGradient: 'from-violet-50/50 via-white to-white',
   },
   {
     icon: Users,
@@ -71,7 +89,10 @@ const FEATURES = [
     desc: 'One-to-one teaching or small-group learning with a maximum of 5 students per batch.',
     tag: '1-to-1 or Max 5',
     color: 'text-teal-600 bg-teal-50 border-teal-200',
-    accent: 'border-teal-300',
+    topBorder: 'border-t-teal-600',
+    badgeStyle: 'text-teal-800 bg-teal-50 border-teal-200',
+    cardBorder: 'border-teal-200/90',
+    bgGradient: 'from-teal-50/50 via-white to-white',
   },
   {
     icon: Calendar,
@@ -79,7 +100,10 @@ const FEATURES = [
     desc: 'Preferred days and timings are considered when scheduling classes, subject to availability.',
     tag: 'Your Schedule',
     color: 'text-sky-600 bg-sky-50 border-sky-200',
-    accent: 'border-sky-300',
+    topBorder: 'border-t-sky-600',
+    badgeStyle: 'text-sky-700 bg-sky-50 border-sky-200',
+    cardBorder: 'border-sky-200/90',
+    bgGradient: 'from-sky-50/50 via-white to-white',
   },
 ];
 
@@ -117,17 +141,17 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
           {FEATURES.map((feat, idx) => {
             return (
               <div
-                key={`${idx}-highlighted`}
+                key={idx}
                 className={`
-                  relative p-5 rounded-2xl bg-white border border-slate-200/90 transition-all duration-300 flex flex-col gap-3 hover:bg-white hover:shadow-soft-md hover:scale-[1.015] shadow-soft-md ${feat.accent}
-`}
+                  relative p-5 rounded-2xl bg-gradient-to-b ${feat.bgGradient} border-2 ${feat.cardBorder} ${feat.topBorder} border-t-4 transition-all duration-200 flex flex-col gap-3 hover:bg-white hover:shadow-soft-lg hover:scale-[1.015] shadow-soft-sm
+                `}
               >
                 <div className="flex items-center justify-between gap-2">
-                  <div className={`p-2.5 rounded-xl border ${feat.color}`}>
+                  <div className={`p-2.5 rounded-xl border ${feat.color} shadow-2xs`}>
                     <feat.icon className="w-4 h-4" />
                   </div>
 
-                  <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-full border border-slate-200">
+                  <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${feat.badgeStyle} shadow-2xs tracking-wide`}>
                     {feat.tag}
                   </span>
                 </div>
@@ -140,7 +164,7 @@ export const Features: React.FC<FeaturesProps> = ({ onOpenDemo }) => {
                   {feat.desc}
                 </p>
 
-                <div className="pt-2 border-t border-slate-200/70 flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700">
+                <div className="pt-2.5 border-t border-slate-200/80 flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>Included in all programs</span>
                 </div>

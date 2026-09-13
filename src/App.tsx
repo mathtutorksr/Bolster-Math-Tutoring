@@ -14,13 +14,6 @@ import { EnquiryModal } from './components/EnquiryModal';
 export const App: React.FC = () => {
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
 
-  const handleScrollToContact = () => {
-    const elem = document.querySelector('#contact');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const handleOpenEnquiryModal = () => {
     setIsEnquiryModalOpen(true);
   };
@@ -35,18 +28,18 @@ export const App: React.FC = () => {
       <EnquiryModal isOpen={isEnquiryModalOpen} onClose={handleCloseEnquiryModal} />
 
       {/* 1. Sticky Navigation */}
-      <Navbar />
+      <Navbar onOpenEnquiry={handleOpenEnquiryModal} />
 
       {/* Main Page Flow */}
       <main className="flex-grow">
         {/* 2. Hero Section (#home) */}
-        <Hero onOpenDemo={handleScrollToContact} />
+        <Hero onOpenDemo={handleOpenEnquiryModal} />
 
         {/* 2b. Teaching Promise Strip — immediately below hero */}
         <TeachingStrip />
 
         {/* 3. About Professor Section (#about) */}
-        <AboutProfessor onOpenDemo={handleScrollToContact} />
+        <AboutProfessor onOpenDemo={handleOpenEnquiryModal} />
 
         {/* 4. Professional Features Section (#features) */}
         <Features onOpenDemo={handleOpenEnquiryModal} />
@@ -58,14 +51,14 @@ export const App: React.FC = () => {
         <FeedbackSection />
 
         {/* 7. Contact Professor (#contact) */}
-        <ContactSection onOpenDemo={handleScrollToContact} />
+        <ContactSection onOpenDemo={handleOpenEnquiryModal} />
       </main>
 
       {/* 8. Footer */}
       <Footer />
 
       {/* 9. Mobile Sticky Action Bar */}
-      <MobileQuickBar onOpenDemoModal={handleScrollToContact} />
+      <MobileQuickBar onOpenDemoModal={handleOpenEnquiryModal} />
     </div>
   );
 };

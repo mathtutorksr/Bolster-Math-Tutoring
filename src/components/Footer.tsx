@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, PhoneCall, Mail, ArrowUp, ArrowRight } from 'lucide-react';
+import { MessageCircle, PhoneCall, Mail, ArrowUp } from 'lucide-react';
 import { CONFIG, getWhatsAppLink, getPhoneCallLink } from '../data/config';
 
 export const Footer: React.FC = () => {
@@ -193,20 +193,10 @@ export const Footer: React.FC = () => {
               <div>
                 <span className="text-[11px] text-slate-500 block">Contact:</span>
                 <a
-                  href="mailto:koppuladeepika16@gmail.com"
+                  href="mailto:koppuladeepika16@gmail.com?subject=Website%20Creation%20Enquiry&body=Hello%20Deepika%2C%20I%20am%20interested%20in%20creating%20a%20website."
                   className="text-slate-300 hover:text-brand-300 transition-colors font-mono text-[11px] break-all underline decoration-slate-600 hover:decoration-brand-400"
                 >
                   koppuladeepika16@gmail.com
-                </a>
-              </div>
-
-              <div className="pt-1">
-                <a
-                  href="mailto:koppuladeepika16@gmail.com?subject=Website%20Creation%20Enquiry&body=Hello%20Deepika%2C%20I%20am%20interested%20in%20creating%20a%20website."
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-navy-900 hover:bg-brand-600/30 text-brand-300 hover:text-white border border-navy-700 hover:border-brand-500 text-[11px] font-semibold transition-all group"
-                >
-                  <span>Contact for Website</span>
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </a>
               </div>
             </div>
